@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+Military Asset Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack web application designed to efficiently manage and monitor military assets such as weapons, vehicles, communication equipment, and other operational resources.
+The system provides a centralized platform where authorized personnel can securely manage assets, monitor inventory, and maintain accurate records using modern web technologies.
 
-## Available Scripts
+📌 Project Overview
 
-In the project directory, you can run:
+Managing military assets is a complex task that requires accuracy, security, and proper tracking. Manual systems can lead to errors, loss of equipment, and inefficient asset allocation.The Military Asset Management System addresses these challenges by providing:
 
-### `npm start`
+Secure authentication for authorized users
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+A centralized database for asset management
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Efficient tracking and monitoring of military equipment
 
-### `npm test`
+Easy updating and management of asset records
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This project demonstrates full-stack development using React, Node.js, Express, and PostgreSQL.
 
-### `npm run build`
+🚀 Key Features
+🔐 Secure Authentication, JWT-based authentication, Secure login system, Protected API routes
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Role-based access control
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+📦 Asset Management, Add new military assets, Update asset details, View all assets in, the system, Delete assets when required
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+📊 Dashboard
 
-### `npm run eject`
+Overview of all assets, Quick access to inventory information
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Organized asset listing
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+🗄 Database Management ,PostgreSQL relational database, Structured asset and user records, Reliable data storage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+🛠 Tech Stack
+Frontend, React.js, ReactRouter, Axios, JavaScript, HTML5 and CSS3
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Backend
+Node.js, Express.js, JWT Authentication, Database, PostgreSQL, Tools, Git & GitHub, Postman (API Testing),VS Code.
 
-## Learn More
+Installation and Setup
+1️⃣ Clone the Repository
+git clone https://github.com/your-username/military-asset-management-system.git
+cd military-asset-management-system
+🖥 Backend Setup
+Navigate to backend folder:
+cd backend
+Install dependencies:
+npm install
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Create a .env file:
+PORT=5000
+JWT_SECRET=your_secret_key
+DATABASE_URL=postgresql://username:password@localhost:5432/military_assets
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Run the backend server:
+npm start
+Backend will run on:
+http://localhost:5000
 
-### Code Splitting
+💻 Frontend Setup
+Navigate to frontend folder:
+cd frontend
+install dependencies:
+npm install
+Start the frontend application:
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Frontend will run on:
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+http://localhost:3000
