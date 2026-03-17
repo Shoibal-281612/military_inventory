@@ -1,4 +1,4 @@
-import { BrowserRouter,Routes,Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Login from "./pages/login";
 import Dashboard from "./pages/dashboard";
@@ -9,52 +9,59 @@ import Expenditure from "./pages/expenditures";
 
 import ProtectedRoute from "./utils/protectedroutes";
 
-function App(){
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
 
-return(
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
 
-<BrowserRouter>
+        <Route
+          path="/purchases"
+          element={
+            <ProtectedRoute>
+              <Purchases />
+            </ProtectedRoute>
+          }
+        />
 
-<Routes>
+        <Route
+          path="/transfers"
+          element={
+            <ProtectedRoute>
+              <Transfers />
+            </ProtectedRoute>
+          }
+        />
 
-<Route path="/" element={<Login/>}/>
+        <Route
+          path="/assignments"
+          element={
+            <ProtectedRoute>
+              <Assignments />
+            </ProtectedRoute>
+          }
+        />
 
-<Route path="/dashboard" element={
-<ProtectedRoute>
-<Dashboard/>
-</ProtectedRoute>
-}/>
-
-<Route path="/purchases" element={
-<ProtectedRoute>
-<Purchases/>
-</ProtectedRoute>
-}/>
-
-<Route path="/transfers" element={
-<ProtectedRoute>
-<Transfers/>
-</ProtectedRoute>
-}/>
-
-<Route path="/assignments" element={
-<ProtectedRoute>
-<Assignments/>
-</ProtectedRoute>
-}/>
-
-<Route path="/expenditure" element={
-<ProtectedRoute>
-<Expenditure/>
-</ProtectedRoute>
-}/>
-
-</Routes>
-
-</BrowserRouter>
-
-)
-
+        <Route
+          path="/expenditure"
+          element={
+            <ProtectedRoute>
+              <Expenditure />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;

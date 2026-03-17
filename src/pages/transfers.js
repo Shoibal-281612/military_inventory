@@ -1,35 +1,30 @@
 import Layout from "../layout/layout";
 
-function Transfers(){
+function Transfers() {
+  return (
+    <Layout>
+      <h2>Transfer Assets</h2>
 
-return(
+      <form>
+        <input placeholder="Asset ID" />
 
-<Layout>
+        <br />
+        <br />
 
-<h2>Transfer Assets</h2>
+        <input placeholder="From Base" />
 
-<form>
+        <br />
+        <br />
 
-<input placeholder="Asset ID"/>
+        <input placeholder="To Base" />
 
-<br/><br/>
+        <br />
+        <br />
 
-<input placeholder="From Base"/>
-
-<br/><br/>
-
-<input placeholder="To Base"/>
-
-<br/><br/>
-
-<button>Transfer</button>
-
-</form>
-
-</Layout>
-
-)
-
+        <button>Transfer</button>
+      </form>
+    </Layout>
+  );
 }
 
 export default Transfers;

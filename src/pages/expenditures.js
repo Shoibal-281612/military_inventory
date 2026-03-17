@@ -1,31 +1,25 @@
 import Layout from "../layout/layout";
 
-function Expenditure(){
+function Expenditure() {
+  return (
+    <Layout>
+      <h2>Expenditure</h2>
 
-return(
+      <form>
+        <input placeholder="Asset" />
 
-<Layout>
+        <br />
+        <br />
 
-<h2>Expenditure</h2>
+        <input placeholder="Cost" />
 
-<form>
+        <br />
+        <br />
 
-<input placeholder="Asset"/>
-
-<br/><br/>
-
-<input placeholder="Cost"/>
-
-<br/><br/>
-
-<button>Add Expense</button>
-
-</form>
-
-</Layout>
-
-)
-
+        <button>Add Expense</button>
+      </form>
+    </Layout>
+  );
 }
 
 export default Expenditure;

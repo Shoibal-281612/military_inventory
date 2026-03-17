@@ -1,31 +1,25 @@
 import Layout from "../layout/layout";
 
-function Assignments(){
+function Assignments() {
+  return (
+    <Layout>
+      <h2>Assign Assets</h2>
 
-return(
+      <form>
+        <input placeholder="Asset ID" />
 
-<Layout>
+        <br />
+        <br />
 
-<h2>Assign Assets</h2>
+        <input placeholder="Personnel Name" />
 
-<form>
+        <br />
+        <br />
 
-<input placeholder="Asset ID"/>
-
-<br/><br/>
-
-<input placeholder="Personnel Name"/>
-
-<br/><br/>
-
-<button>Assign</button>
-
-</form>
-
-</Layout>
-
-)
-
+        <button>Assign</button>
+      </form>
+    </Layout>
+  );
 }
 
 export default Assignments;
