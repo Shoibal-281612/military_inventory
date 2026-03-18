@@ -32,8 +32,23 @@ alert(err.response?.data?.message || "Login failed");
     }
   };
 
-  return (
-    <div style={{ margin: "100px" }}>
+ return (
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100vh",
+    }}
+  >
+    <div
+      style={{
+        padding: "30px",
+        borderRadius: "10px",
+        width: "300px",
+        textAlign: "center",
+      }}
+    >
       <h2>Login</h2>
 
       <form onSubmit={handleLogin}>
@@ -41,25 +56,35 @@ alert(err.response?.data?.message || "Login failed");
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          style={{ width: "100%", padding: "8px" }}
         />
 
-        <br />
-        <br />
+        <br /><br />
 
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          style={{ width: "100%", padding: "8px" }}
         />
 
-        <br />
-        <br />
+        <br /><br />
 
-        <button type="submit">Login</button>
+        <button
+          type="submit"
+          style={{
+            width: "50%",
+            padding: "10px",
+            cursor: "pointer",
+            backgroundColor:"dodgerblue"
+          }}
+        >
+          Login
+        </button>
       </form>
     </div>
-  );
-}
+  </div>
+)};
 
 export default Login;

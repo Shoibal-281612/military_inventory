@@ -7,7 +7,7 @@ function Dashboard() {
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
-  const rowsPerPage = 6;
+  const rowsPerPage = 5;
 
   useEffect(() => {
     fetchAssets();
