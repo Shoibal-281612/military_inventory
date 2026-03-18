@@ -12,6 +12,7 @@ function Login() {
     e.preventDefault();
 
     try {
+      console.log("Sending request...");
       const res = await API.post("/auth/login", { email, password });
 
       console.log("LOGIN RESPONSE:", res.data); // debugging
@@ -26,8 +27,8 @@ function Login() {
         alert("Token not received from server");
       }
     } catch (err) {
-      console.log(err);
-      alert("Login failed");
+      console.log(err.response?.data || err.message);
+alert(err.response?.data?.message || "Login failed");
     }
   };
 
