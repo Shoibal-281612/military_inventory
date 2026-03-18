@@ -4,6 +4,10 @@ import API from "../services/api";
 
 function Dashboard() {
   const [data, setData] = useState([]);
+  const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const rowsPerPage = 6;
 
   useEffect(() => {
     fetchAssets();
@@ -14,44 +18,66 @@ function Dashboard() {
     setData(res.data);
   };
 
-  const totalPurchases = data.reduce((a, b) => a + Number(b.purchases || 0), 0);
-  const totalTransfers = data.reduce(
+  //Search Filter
+  const filteredData = data.filter((row) =>
+    `${row.base_name} ${row.asset}`
+      .toLowerCase()
+      .includes(search.toLowerCase()),
+  );
+
+  //Pagination Logic
+  const indexOfLastRow = currentPage * rowsPerPage;
+  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+  const currentRows = filteredData.slice(indexOfFirstRow, indexOfLastRow);
+
+  //Totals (based on filtered data)
+  const totalPurchases = filteredData.reduce(
+    (a, b) => a + Number(b.purchases || 0),
+    0,
+  );
+  const totalTransfers = filteredData.reduce(
     (a, b) => a + Number(b.transfer_in || 0),
     0,
   );
-  const totalAssignments = data.reduce(
+  const totalAssignments = filteredData.reduce(
     (a, b) => a + Number(b.assignments || 0),
     0,
   );
-  const totalExpended = data.reduce((a, b) => a + Number(b.expended || 0), 0);
+  const totalExpended = filteredData.reduce(
+    (a, b) => a + Number(b.expended || 0),
+    0,
+  );
 
   return (
     <Layout>
       <h1>Military Asset Dashboard</h1>
 
+      {/*Search Bar */}
+      <input
+        type="text"
+        placeholder="Search by Base or Asset..."
+        value={search}
+        onChange={(e) => {
+          setSearch(e.target.value);
+          setCurrentPage(1);
+        }}
+        style={{
+          padding: "10px",
+          marginBottom: "20px",
+          width: "300px",
+        }}
+      />
+
+      {/*Summary Cards */}
       <div style={{ display: "flex", gap: "20px", marginBottom: "30px" }}>
-        <div style={{ background: "#e2e8f0", padding: "20px" }}>
-          Total Purchases
-          <h2>{totalPurchases}</h2>
-        </div>
-
-        <div style={{ background: "#e2e8f0", padding: "20px" }}>
-          Total Transfers
-          <h2>{totalTransfers}</h2>
-        </div>
-
-        <div style={{ background: "#e2e8f0", padding: "20px" }}>
-          Total Assignments
-          <h2>{totalAssignments}</h2>
-        </div>
-
-        <div style={{ background: "#e2e8f0", padding: "20px" }}>
-          Total Expenditure
-          <h2>{totalExpended}</h2>
-        </div>
+        <Card title="Total Purchases" value={totalPurchases} />
+        <Card title="Total Transfers" value={totalTransfers} />
+        <Card title="Total Assignments" value={totalAssignments} />
+        <Card title="Total Expenditure" value={totalExpended} />
       </div>
 
-      <table border="1" cellPadding="10">
+      {/*Table */}
+      <table border="1" cellPadding="10" width="100%">
         <thead>
           <tr>
             <th>Base</th>
@@ -67,7 +93,7 @@ function Dashboard() {
         </thead>
 
         <tbody>
-          {data.map((row, i) => {
+          {currentRows.map((row, i) => {
             const net =
               Number(row.purchases) +
               Number(row.transfer_in) -
@@ -89,7 +115,46 @@ function Dashboard() {
           })}
         </tbody>
       </table>
+
+      {/*Pagination Controls */}
+      <div style={{ marginTop: "20px" }}>
+        <button
+          onClick={() => setCurrentPage((prev) => prev - 1)}
+          disabled={currentPage === 1}
+        >
+          Prev
+        </button>
+
+        <span style={{ margin: "0 10px" }}>
+          Page {currentPage} of {Math.ceil(filteredData.length / rowsPerPage)}
+        </span>
+
+        <button
+          onClick={() => setCurrentPage((prev) => prev + 1)}
+          disabled={indexOfLastRow >= filteredData.length}
+        >
+          Next
+        </button>
+      </div>
     </Layout>
+  );
+}
+
+// 💡 Reusable Card Component (clean UI)
+function Card({ title, value }) {
+  return (
+    <div
+      style={{
+        background: "#e2e8f0",
+        padding: "20px",
+        borderRadius: "10px",
+        minWidth: "150px",
+        textAlign: "center",
+      }}
+    >
+      <p>{title}</p>
+      <h2>{value}</h2>
+    </div>
   );
 }
 
